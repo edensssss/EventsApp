@@ -1,10 +1,12 @@
-package com.example.event_invitations_app;
+package com.example.events;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.event_invitations_app.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
