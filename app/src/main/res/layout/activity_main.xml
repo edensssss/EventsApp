@@ -7,6 +7,8 @@
     android:background="#00002C3C"
     tools:context="com.example.events.MainActivity">
 
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -20,15 +22,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-        <EditText
-            android:id="@+id/recgText"
+
+
+<!--        <EditText-->
+<!--            android:id="@+id/recgText"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:ems="10"-->
+<!--            android:hint="Extract text will desplay here"-->
+<!--            android:inputType="textMultiLine|textPersonName" />-->
+
+        <ImageView
+            android:id="@+id/main_imageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:hint="Extract text will desplay here"
-            android:inputType="textMultiLine|textPersonName" />
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+
     </androidx.cardview.widget.CardView>
+
+
+
+
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -40,6 +61,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
+
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -49,6 +72,8 @@
             app:layout_constraintEnd_toEndOf="@+id/clear"
             app:layout_constraintStart_toStartOf="@+id/clear"
             app:layout_constraintTop_toBottomOf="@+id/clear" />
+
+
 
         <ImageView
             android:id="@+id/getImage"
@@ -91,6 +116,12 @@
             app:layout_constraintEnd_toEndOf="@+id/copy"
             app:layout_constraintStart_toStartOf="@+id/copy"
             app:layout_constraintTop_toBottomOf="@+id/copy" />
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,9 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -21,6 +24,7 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.ResponseHeaderOverrides;
+import com.bumptech.glide.Glide;
 import com.example.event_invitations_app.R;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,7 +36,10 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Date;
@@ -42,12 +49,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     ImageView clear, getImage, copy;
     EditText recgText;
     Uri imageUri;
     TextRecognizer textRecognizer;
+
+    ///Temp:
+    //Temporary line:
+    ImageView main_imageView;
 
     //AWS attributes
     private BasicAWSCredentials credentials;
@@ -61,8 +74,9 @@ public class MainActivity extends AppCompatActivity {
         clear = findViewById(R.id.clear);
         getImage = findViewById(R.id.getImage);
         copy = findViewById(R.id.copy);
-        recgText = findViewById(R.id.recgText);
+        //recgText = findViewById(R.id.recgText);
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
+        main_imageView = findViewById(R.id.main_imageView);
 
         //press on Camera button opens two option for upload image: using Gallery app or Camera app
         getImage.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
                         .compress(1024)			//Final image size will be less than 1 MB(Optional)
                         .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
                         .start();
-               //onActivityResult();
             }
         });
 
@@ -86,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (text.isEmpty()) {
 
-                    Toast.makeText(MainActivity.this, "Tere is no text to copy", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "There is no text to copy", Toast.LENGTH_SHORT).show();
                 }
                 else{
                         ClipboardManager clipboardManager = (ClipboardManager) getSystemService(MainActivity.this.CLIPBOARD_SERVICE);
@@ -126,15 +139,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == Activity.RESULT_OK){
-            Log.d("myTag", "Image accept");
+        Log.e("myTag", "onActivityResult");
+
+
+        if (resultCode == Activity.RESULT_OK){
 
             if(data != null){
 
                 imageUri = data.getData();
+
                 Toast.makeText(this, "image selected", Toast.LENGTH_SHORT).show();
 
-                recognizeText();
+                convertAndTransferImage();
             }
             else {
                 Toast.makeText(this, "image not selected", Toast.LENGTH_SHORT).show();
@@ -142,14 +158,46 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void recognizeText() {
+    private void convertAndTransferImage() {
 
-        if (imageUri != null){
+        if (imageUri != null){ // The Uri of the image you want to save
 
+            Log.e("myTag", "ImageUri is not NULL!!!!!!!");
+
+            //Display image on screen SUCCESSFULLY
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                main_imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            //Transfer image to AWS ACTIVITY
             Intent intent = new Intent(MainActivity.this, AwsActivity.class);
             intent.putExtra("imageUri", imageUri.toString());
-            finish();
+            //finish();
             startActivity(intent);
+
+
+
+//            try {
+//                InputImage inputImage = InputImage.fromFilePath(MainActivity.this, imageUri);
+//
+//                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//                inputImage.getByteBuffer().rewind();
+//                byte[] buffer = new byte[inputImage.getByteBuffer().remaining()];
+//                inputImage.getByteBuffer().get(buffer);
+//
+//                Intent intent = new Intent(MainActivity.this, AwsActivity.class);
+//                intent.putExtra("inputImage", buffer);
+//                startActivity(intent);
+//
+//            } catch (IOException e){
+//                e.printStackTrace();
+//            }
+
+
 
         }
     }
