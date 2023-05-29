@@ -2,6 +2,7 @@ package com.example.events.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -81,6 +82,11 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
                     String jsonFileContent = readFileContent(jsonFilePath);
                     Log.e("JSON Content", jsonFileContent);
 
+                    //Transfer jsonFileContent to CALENDAR ACTIVITY
+                    Intent intent = new Intent(AwsActivity.this, CalendarActivity.class);
+                    intent.putExtra("jsonFileContent", jsonFileContent.toString());
+                    finish();
+                    startActivity(intent);
 
                 } catch (Exception e) {
                     e.printStackTrace();

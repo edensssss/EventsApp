@@ -62,7 +62,7 @@ public class S3Downloader {
             File downloadedFile = new File(downloadDirectory, jsonFileKey);
 
             // Define the timeout duration in milliseconds (6 seconds)
-            long timeoutDuration = 6000;
+            long timeoutDuration = 5000;
 
             // Get the start time
             long startTime = System.currentTimeMillis();
