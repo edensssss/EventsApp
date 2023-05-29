@@ -9,6 +9,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
+
+
 import java.io.File;
 
 public class S3Uploader {
@@ -18,7 +20,6 @@ public class S3Uploader {
         // AWS S3 credentials
         final String ACCESS_ID = "AKIAV3C4ZI4UUPKW4SUM";
         final String SECRET_KEY = "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";
-        //final String region = "eu-west-1";
         final String BUCKET_NAME = "data-inventations";
         final String TAG = "S3Uploader";
 
@@ -45,5 +46,8 @@ public class S3Uploader {
 
             // You can handle the error case as per your requirement
         }
-    }
+    } //end
+
+
+
 }
