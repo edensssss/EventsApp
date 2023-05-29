@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00002C3C"
+    android:background="@color/white"
     tools:context="com.example.events.Activity.MainActivity">
 
 
@@ -39,6 +39,7 @@
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:background="#ECE2E2"
             app:layout_constraintTop_toTopOf="parent"/>
 
 
@@ -55,23 +56,11 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#E91E63"
+        android:background="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
-
-
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clear"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="@+id/clear"
-            app:layout_constraintStart_toStartOf="@+id/clear"
-            app:layout_constraintTop_toBottomOf="@+id/clear" />
 
 
 
@@ -86,36 +75,6 @@
             app:srcCompat="@drawable/ic_camera"
             app:tint="@color/white" />
 
-        <ImageView
-            android:id="@+id/clear"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/getImage"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_eraser" />
-
-        <ImageView
-            android:id="@+id/copy"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/getImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_copy" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:text="Copy"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="@+id/copy"
-            app:layout_constraintStart_toStartOf="@+id/copy"
-            app:layout_constraintTop_toBottomOf="@+id/copy" />
 
 
 

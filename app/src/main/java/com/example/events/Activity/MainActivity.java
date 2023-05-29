@@ -48,10 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        clear = findViewById(R.id.clear);
         getImage = findViewById(R.id.getImage);
-        copy = findViewById(R.id.copy);
-        //recgText = findViewById(R.id.recgText);
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
         main_imageView = findViewById(R.id.main_imageView);
 
@@ -66,48 +63,6 @@ public class MainActivity extends AppCompatActivity {
                         .start();
             }
         });
-
-
-        copy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String text = recgText.getText().toString();
-
-                if (text.isEmpty()) {
-
-                    Toast.makeText(MainActivity.this, "There is no text to copy", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(MainActivity.this.CLIPBOARD_SERVICE);
-                        ClipData clipData = ClipData.newPlainText("Data", recgText.getText().toString());
-                        clipboardManager.setPrimaryClip(clipData);
-
-                        Toast.makeText(MainActivity.this, "Text copy to Clipboard", Toast.LENGTH_SHORT).show();
-
-                    }
-
-            }
-        });
-
-
-
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String text = recgText.getText().toString();
-
-                if (text.isEmpty()){
-
-                    Toast.makeText(MainActivity.this, "There is no text to clear", Toast.LENGTH_SHORT).show();
-
-                }else{
-                    recgText.setText("");
-                }
-            }
-        });
-
 
     }
 
@@ -125,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
                 imageUri = data.getData();
 
-                Toast.makeText(this, "image selected", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "image selected", Toast.LENGTH_SHORT).show();
 
                 convertAndTransferImage();
             }
@@ -155,24 +110,6 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("imageUri", imageUri.toString());
             //finish();
             startActivity(intent);
-
-
-
-//            try {
-//                InputImage inputImage = InputImage.fromFilePath(MainActivity.this, imageUri);
-//
-//                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//                inputImage.getByteBuffer().rewind();
-//                byte[] buffer = new byte[inputImage.getByteBuffer().remaining()];
-//                inputImage.getByteBuffer().get(buffer);
-//
-//                Intent intent = new Intent(MainActivity.this, AwsActivity.class);
-//                intent.putExtra("inputImage", buffer);
-//                startActivity(intent);
-//
-//            } catch (IOException e){
-//                e.printStackTrace();
-//            }
 
 
 
