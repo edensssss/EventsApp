@@ -21,7 +21,9 @@ import java.io.BufferedReader;
 
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.amazonaws.regions.Region;
@@ -37,6 +39,7 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
     private ImageView imageView;
     private ImageView succeedIcon;
     private ImageView failedIcon;
+    private ProgressBar loadingProgressBar;
 
     //@SuppressLint("MissingInflatedId")
     @Override
@@ -46,8 +49,9 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
         setContentView(R.layout.activity_aws);
 
         imageView = findViewById(R.id.invitationImageView);
-        succeedIcon = findViewById(R.id.succeedIcon);
-        failedIcon = findViewById(R.id.failedIcon);
+        succeedIcon = findViewById(R.id.succeedIconImageView);
+        failedIcon = findViewById(R.id.failedIconImageView);
+        loadingProgressBar = findViewById(R.id.loadingProgressBar);
 
         //Retrieve the Uri from the intent
         String imageUriString = getIntent().getStringExtra("imageUri");
@@ -67,6 +71,9 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
             public void run() {
                 try  {
 
+                    //start loading ProgressBar
+                    loadingProgressBar.setVisibility(View.VISIBLE);
+
                     //Upload imageInput to S3
                     S3Uploader.uploadImage(AwsActivity.this, imageUri);
 
@@ -76,11 +83,17 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
                     //Download json file from S3
                     String jsonFilePath  = S3Downloader.downloadJsonFile(AwsActivity.this, jsonFileName);
 
-                    isJsonEmpty(jsonFilePath);
-
                     //Print event details
                     String jsonFileContent = readFileContent(jsonFilePath);
                     Log.e("JSON Content", jsonFileContent);
+
+                    //check json content
+                    if(jsonFileContent.isEmpty()){
+                        loadingProgressBar.setVisibility(View.GONE);
+                        succeedIcon.setVisibility(View.INVISIBLE);
+                        failedIcon.setVisibility(View.VISIBLE);
+                        Toast.makeText(AwsActivity.this, "Sorry, image cannot be recognized", Toast.LENGTH_SHORT).show();
+                    }
 
                     //Transfer jsonFileContent to CALENDAR ACTIVITY
                     Intent intent = new Intent(AwsActivity.this, CalendarActivity.class);
@@ -102,14 +115,23 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
 
     }
 
-    private void isJsonEmpty(String jsonFilePath) {
-
-        if(jsonFilePath == null)
-        {
-            Toast.makeText(AwsActivity.this, "Sorry, image cannot be recognized", Toast.LENGTH_SHORT).show();
-        }
-
-    }
+//    private void isJsonEmpty(String jsonFilePath) {
+//
+//        if(!jsonFilePath.isEmpty())
+//        {
+//            loadingProgressBar.setVisibility(View.GONE);
+//            succeedIcon.setVisibility(View.VISIBLE);
+//            failedIcon.setVisibility(View.INVISIBLE);
+//
+//        }
+//        else{
+//            loadingProgressBar.setVisibility(View.GONE);
+//            succeedIcon.setVisibility(View.INVISIBLE);
+//            failedIcon.setVisibility(View.VISIBLE);
+//            Toast.makeText(AwsActivity.this, "Sorry, image cannot be recognized", Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
 
 
     private String readFileContent(String filePath) {
