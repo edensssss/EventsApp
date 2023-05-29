@@ -1,4 +1,4 @@
-package com.example.events;
+package com.example.events.AWS_S3;
 import android.content.Context;
 import android.net.Uri;
 import com.amazonaws.AmazonServiceException;

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Event_Invitations_App"
         tools:targetApi="33">
         <activity
-            android:name="com.example.events.SplashScreenActivity"
+            android:name="com.example.events.Activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.events.AwsActivity"
+            android:name="com.example.events.Activity.AwsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +39,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.events.MainActivity"
+            android:name="com.example.events.Activity.MainActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"

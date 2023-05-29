@@ -1,48 +1,32 @@
-package com.example.events;
+package com.example.events.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import com.example.event_invitations_app.R;
-import com.google.mlkit.vision.common.InputImage;
+import com.example.events.Convertors.JsonConverter;
+import com.example.events.AWS_S3.S3Downloader;
+import com.example.events.AWS_S3.S3Uploader;
 
-import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
-import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.core.SdkField;
 import software.amazon.awssdk.core.SdkPojo;
-import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.utils.builder.ToCopyableBuilder;
 
 import java.io.BufferedReader;
-import java.io.File;
 
-import android.content.Context;
-import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Region;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.CannedAccessControlList;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
-import java.nio.ByteBuffer;
 import java.util.List;
 
 
@@ -77,26 +61,19 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
             @Override
             public void run() {
                 try  {
-                    Log.e("File name imageUri", imageUri.toString());
 
                     //Upload imageInput to S3
                     S3Uploader.uploadImage(AwsActivity.this, imageUri);
 
-
-
-
+                    //Get image name from imageUri using JsonConverter
                     String jsonFileName = JsonConverter.getFileName(imageUri.toString());
-                    Log.e("File path ti S3", jsonFileName.toString());
 
-                    String filePath  = S3Downloader.downloadJsonFile(AwsActivity.this, jsonFileName);
+                    //Download json file from S3
+                    String jsonFilePath  = S3Downloader.downloadJsonFile(AwsActivity.this, jsonFileName);
 
-                    // Log the JSON content
-                    Log.e("JSON Content", filePath.toString());
-
-
-                    String fileContent = readFileContent(filePath);
-                    Log.d("JSON Content", fileContent);
-
+                    //Print event details
+                    String jsonFileContent = readFileContent(jsonFilePath);
+                    Log.e("JSON Content", jsonFileContent);
 
 
                 } catch (Exception e) {
