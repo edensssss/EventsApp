@@ -21,11 +21,13 @@ import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.utils.builder.ToCopyableBuilder;
 
+import java.io.BufferedReader;
 import java.io.File;
 
 import android.content.Context;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.amazonaws.auth.AWSCredentials;
@@ -37,6 +39,7 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 import java.nio.ByteBuffer;
@@ -51,6 +54,7 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
     //@SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aws);
 
@@ -73,9 +77,28 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
             @Override
             public void run() {
                 try  {
+                    Log.e("File name imageUri", imageUri.toString());
+
                     //Upload imageInput to S3
                     S3Uploader.uploadImage(AwsActivity.this, imageUri);
-                    //Your code goes here
+
+
+
+
+                    String jsonFileName = JsonConverter.getFileName(imageUri.toString());
+                    Log.e("File path ti S3", jsonFileName.toString());
+
+                    String filePath  = S3Downloader.downloadJsonFile(AwsActivity.this, jsonFileName);
+
+                    // Log the JSON content
+                    Log.e("JSON Content", filePath.toString());
+
+
+                    String fileContent = readFileContent(filePath);
+                    Log.d("JSON Content", fileContent);
+
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -88,6 +111,22 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
 
 
 
+    }
+
+
+    private String readFileContent(String filePath) {
+        StringBuilder content = new StringBuilder();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return content.toString();
     }
 
     @Override
