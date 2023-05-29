@@ -2,8 +2,10 @@ package com.example.events.AWS_S3;
 
 import android.content.Context;
 import android.os.Environment;
+import android.widget.Toast;
 
 import com.amazonaws.AmazonServiceException;
+import com.amazonaws.auth.AWS4Signer;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
@@ -12,6 +14,8 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.util.IOUtils;
+import com.example.events.Activity.AwsActivity;
+import com.example.events.Activity.MainActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
