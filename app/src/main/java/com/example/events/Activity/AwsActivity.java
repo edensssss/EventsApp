@@ -79,7 +79,7 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
                     //Transfer jsonFileContent to CALENDAR ACTIVITY
                     Intent intent = new Intent(AwsActivity.this, CalendarActivity.class);
                     intent.putExtra("jsonFileContent", jsonFileContent.toString());
-                    //finish();
+                    finish();
                     startActivity(intent);
 
                 } catch (Exception e) {

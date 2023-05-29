@@ -42,8 +42,6 @@
             android:background="#ECE2E2"
             app:layout_constraintTop_toTopOf="parent"/>
 
-
-
     </androidx.cardview.widget.CardView>
 
 
@@ -61,7 +59,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
-
 
 
         <ImageView
