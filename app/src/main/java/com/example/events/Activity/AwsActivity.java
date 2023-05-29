@@ -22,6 +22,7 @@ import java.io.BufferedReader;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.amazonaws.regions.Region;
 
@@ -33,8 +34,9 @@ import java.util.List;
 
 public class AwsActivity extends AppCompatActivity implements Serializable, Comparable<Region>, SdkPojo, ToCopyableBuilder<PutObjectRequest.Builder,PutObjectRequest> {
 
-    //Temporary line:
-    ImageView imageView;
+    private ImageView imageView;
+    private ImageView succeedIcon;
+    private ImageView failedIcon;
 
     //@SuppressLint("MissingInflatedId")
     @Override
@@ -43,7 +45,9 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aws);
 
-        imageView = findViewById(R.id.temporaryImageView);
+        imageView = findViewById(R.id.invitationImageView);
+        succeedIcon = findViewById(R.id.succeedIcon);
+        failedIcon = findViewById(R.id.failedIcon);
 
         //Retrieve the Uri from the intent
         String imageUriString = getIntent().getStringExtra("imageUri");
@@ -72,6 +76,8 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
                     //Download json file from S3
                     String jsonFilePath  = S3Downloader.downloadJsonFile(AwsActivity.this, jsonFileName);
 
+                    isJsonEmpty(jsonFilePath);
+
                     //Print event details
                     String jsonFileContent = readFileContent(jsonFilePath);
                     Log.e("JSON Content", jsonFileContent);
@@ -93,6 +99,15 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
 
 
 
+
+    }
+
+    private void isJsonEmpty(String jsonFilePath) {
+
+        if(jsonFilePath == null)
+        {
+            Toast.makeText(AwsActivity.this, "Sorry, image cannot be recognized", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
