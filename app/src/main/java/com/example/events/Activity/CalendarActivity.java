@@ -20,6 +20,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.provider.CalendarContract;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.app.DatePickerDialog;
@@ -137,7 +138,7 @@ public class CalendarActivity extends AppCompatActivity {
         startDatetimeEditText.setOnClickListener(dateTimeClickListener);
         endDatetimeEditText.setOnClickListener(dateTimeClickListener);
 
-        Button addEventButton = findViewById(R.id.addEventButton);
+        ImageView addEventButton = findViewById(R.id.addEventButton);
         addEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

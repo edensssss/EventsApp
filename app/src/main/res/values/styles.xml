@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.ImagePicker" parent="Theme.AppCompat.Light">
+        <!-- Customize the background color -->
+        <item name="android:windowBackground">#F1F1F1</item>
+        <!-- Customize the gravity to center the title -->
+        <item name="android:gravity">left</item>
+    </style>
+
+
+
+</resources>

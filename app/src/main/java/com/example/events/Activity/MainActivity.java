@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getImage = findViewById(R.id.getImage);
+        getImage = findViewById(R.id.upload_imageView);
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
-        main_imageView = findViewById(R.id.main_imageView);
+        //main_imageView = findViewById()
 
         //press on Camera button opens two option for upload image: using Gallery app or Camera app
         getImage.setOnClickListener(new View.OnClickListener() {
@@ -97,12 +97,12 @@ public class MainActivity extends AppCompatActivity {
             Log.e("myTag", "ImageUri is not NULL!!!!!!!");
 
             //Display image on screen SUCCESSFULLY
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-                main_imageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+//                main_imageView.setImageBitmap(bitmap);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
 
 
             //Transfer image to AWS ACTIVITY
