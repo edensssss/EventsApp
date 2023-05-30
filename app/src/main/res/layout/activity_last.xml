@@ -28,7 +28,7 @@ tools:context="com.example.events.Activity.LastActivity">
     app:layout_constraintTop_toBottomOf="@+id/documents_logo"
     app:layout_constraintVertical_bias="0"
     android:textStyle="bold"
-    android:textSize="22sp"
+    android:textSize="18sp"
     android:textColor="#575455" />
 
 <TextView

@@ -9,6 +9,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.Manifest;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -70,6 +72,7 @@ public class CalendarActivity extends AppCompatActivity {
         TextInputLayout descriptionInputLayout = findViewById(R.id.descriptionTextView);
         descriptionEditText = descriptionInputLayout.getEditText();
 
+
         try {
             //String jsonString = loadJSONFromAsset("event.json");
             JSONObject eventJson = new JSONObject(jsonFileContent);
@@ -80,6 +83,7 @@ public class CalendarActivity extends AppCompatActivity {
             String startDateTime = eventJson.getString("startDateTime");
             String endDateTime = eventJson.getString("endDateTime");
             String description = eventJson.getString("description");
+
 
             // Set the event details to the TextViews
             titleEditText.setText(title);
