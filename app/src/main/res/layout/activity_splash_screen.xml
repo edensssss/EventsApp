@@ -22,13 +22,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="INVITATIONS TO CALENDAR"
-        android:textColor="#000000"
-        android:textSize="24sp"
         android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="#575455"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.064" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

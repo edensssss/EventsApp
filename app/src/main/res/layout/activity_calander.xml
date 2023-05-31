@@ -5,131 +5,144 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15sp"
-    android:background="#ffedec">
+    android:background="#FFFFFF">
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="100sp"
         android:layout_height="100sp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="6dip"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/ic_logo" />
 
     />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="30dp"
-        android:orientation="vertical">
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        android:padding="20dp">
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/titleTextView"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:hint="title"
             android:layout_weight="1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:layout_marginBottom="5dp"
+            app:hintTextColor="@color/black"
+            app:hintEnabled="true"
+            android:hint="title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:background="@color/white"
+                android:layout_weight="1"
+                android:background="#EDEDED"
                 android:hint="title"
+                app:hintTextColor="@color/black"
+                app:hintEnabled="true"
+                android:textColor="@color/black" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/locationTextView"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:hint="location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#EDEDED"
+                android:hint="location"
+                android:textColor="@color/black" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/startdatetimeTextView"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:hint="start date time">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#EDEDED"
+                android:hint="start date time"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enddatetimeTextView"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:hint="end date time">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#EDEDED"
+                android:hint="end date time"
+                android:textColor="@color/black" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/descriptionTextView"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:hint="description">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#EDEDED"
+                android:hint="description"
+                android:textColor="@color/black"
+
                 />
 
 
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/locationTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:hint="location"
-            android:layout_weight="1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:background="@color/white"
-                android:hint="location"
-                />
 
 
-        </com.google.android.material.textfield.TextInputLayout> <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/startdatetimeTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="start date time"
-        android:layout_weight="1"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:background="@color/white"
-            android:hint="start date time"
-            />
-    </com.google.android.material.textfield.TextInputLayout> <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/enddatetimeTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="end date time"
-        android:layout_weight="1"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:background="@color/white"
-            android:hint="end date time"
-            />
-
-
-    </com.google.android.material.textfield.TextInputLayout> <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/descriptionTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="description"
-        android:layout_weight="1"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:background="@color/white"
-            android:hint="description"
-            />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-        <Button
+        <ImageView
             android:id="@+id/addEventButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Event to Calendar"
-            android:backgroundTint="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
             android:layout_below="@id/descriptionTextView"
-            android:textColor="@color/white"
-            />
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="35dp"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/ic_add_event_to_calendar"
+            android:text="Add Event to Calendar"
+            android:textColor="@color/white" />
     </LinearLayout>
 </RelativeLayout>

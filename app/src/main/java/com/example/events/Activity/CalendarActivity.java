@@ -9,6 +9,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.Manifest;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -20,6 +22,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.provider.CalendarContract;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.app.DatePickerDialog;
@@ -69,6 +72,7 @@ public class CalendarActivity extends AppCompatActivity {
         TextInputLayout descriptionInputLayout = findViewById(R.id.descriptionTextView);
         descriptionEditText = descriptionInputLayout.getEditText();
 
+
         try {
             //String jsonString = loadJSONFromAsset("event.json");
             JSONObject eventJson = new JSONObject(jsonFileContent);
@@ -79,6 +83,7 @@ public class CalendarActivity extends AppCompatActivity {
             String startDateTime = eventJson.getString("startDateTime");
             String endDateTime = eventJson.getString("endDateTime");
             String description = eventJson.getString("description");
+
 
             // Set the event details to the TextViews
             titleEditText.setText(title);
@@ -137,7 +142,7 @@ public class CalendarActivity extends AppCompatActivity {
         startDatetimeEditText.setOnClickListener(dateTimeClickListener);
         endDatetimeEditText.setOnClickListener(dateTimeClickListener);
 
-        Button addEventButton = findViewById(R.id.addEventButton);
+        ImageView addEventButton = findViewById(R.id.addEventButton);
         addEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
