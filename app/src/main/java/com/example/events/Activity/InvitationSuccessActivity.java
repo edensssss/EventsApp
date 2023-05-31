@@ -2,9 +2,7 @@ package com.example.events.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,12 +10,12 @@ import android.widget.TextView;
 
 import com.example.event_invitations_app.R;
 
-public class LastActivity extends AppCompatActivity {
+public class InvitationSuccessActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_last);
+        setContentView(R.layout.activity_invitation_success);
 
         // Get the title from the intent
         String title = getIntent().getStringExtra("title");
@@ -38,7 +36,7 @@ public class LastActivity extends AppCompatActivity {
 
 
                 // Open new activity with the title "Event added to calendar"
-                Intent intent = new Intent(LastActivity.this, MainActivity.class);
+                Intent intent = new Intent(InvitationSuccessActivity.this, MainActivity.class);
                 startActivity(intent);
 
             }

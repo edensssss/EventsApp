@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -18,9 +18,15 @@
         tools:targetApi="33">
 
 
-
         <activity
-            android:name="com.example.events.Activity.LastActivity"
+            android:name="com.example.events.Activity.InvitationSuccessActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.events.Activity.InvitationFailedActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -62,8 +68,7 @@
         <activity
             android:name="com.example.events.Activity.MainActivity"
             android:exported="true"
-            android:theme="@style/AppTheme.ImagePicker"
-            >
+            android:theme="@style/AppTheme.ImagePicker">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
