@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     Uri imageUri;
     TextRecognizer textRecognizer;
 
-    ///Temp:
     //Temporary line:
     ImageView main_imageView;
 
