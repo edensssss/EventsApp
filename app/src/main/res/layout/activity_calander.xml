@@ -37,7 +37,7 @@
             android:layout_marginBottom="5dp"
             app:hintTextColor="@color/black"
             app:hintEnabled="true"
-            android:hint="title">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -45,9 +45,8 @@
                 android:layout_weight="1"
                 android:background="#EDEDED"
                 android:hint="title"
-                app:hintTextColor="@color/black"
                 app:hintEnabled="true"
-                android:textColor="@color/black" />
+                />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -59,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginBottom="5dp"
-            android:hint="location">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -67,7 +66,7 @@
                 android:layout_weight="1"
                 android:background="#EDEDED"
                 android:hint="location"
-                android:textColor="@color/black" />
+                />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -79,15 +78,17 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginBottom="5dp"
-            android:hint="start date time">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#EDEDED"
+                android:textAlignment="viewStart"
                 android:hint="start date time"
-                android:textColor="@color/black" />
+
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -97,15 +98,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginBottom="5dp"
-            android:hint="end date time">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textAlignment="viewStart"
                 android:background="#EDEDED"
                 android:hint="end date time"
-                android:textColor="@color/black" />
+                 />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -117,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginBottom="5dp"
-            android:hint="description">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -125,7 +127,7 @@
                 android:layout_weight="1"
                 android:background="#EDEDED"
                 android:hint="description"
-                android:textColor="@color/black"
+
 
                 />
 
