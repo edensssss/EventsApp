@@ -45,6 +45,8 @@
                 android:layout_weight="1"
                 android:background="#EDEDED"
                 android:hint="title"
+                android:maxLines="2"
+                android:scrollbars="vertical"
                 app:hintEnabled="true"
                 />
 
@@ -65,6 +67,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#EDEDED"
+                android:maxLines="3"
+                android:scrollbars="vertical"
                 android:hint="location"
                 />
 
@@ -127,7 +131,8 @@
                 android:layout_weight="1"
                 android:background="#EDEDED"
                 android:hint="description"
-
+                android:maxLines="2"
+                android:scrollbars="vertical"
 
                 />
 

@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder=CreateBuilder();
 
 
-        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ContentResolver resolver = getContentResolver();
