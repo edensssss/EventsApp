@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
     android:background="@color/white"
-    tools:context="com.example.events.Activity.LastActivity">
+    tools:context="com.example.events.Activity.InvitationSuccessActivity">
 
 <ImageView
     android:id="@+id/documents_logo"

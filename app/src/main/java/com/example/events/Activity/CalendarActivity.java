@@ -3,21 +3,15 @@ package com.example.events.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.provider.CalendarContract;
@@ -204,7 +198,7 @@ public class CalendarActivity extends AppCompatActivity {
                     {
                         cr.insert(CalendarContract.Events.CONTENT_URI, values);
                         // Open new activity with the title "Event added to calendar"
-                        Intent intent = new Intent(this, LastActivity.class);
+                        Intent intent = new Intent(this, InvitationSuccessActivity.class);
                         intent.putExtra("title", "Event added to calendar");
                         startActivity(intent);
                     }

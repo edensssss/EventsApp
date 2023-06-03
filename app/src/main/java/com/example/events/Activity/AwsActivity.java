@@ -88,18 +88,23 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
                     Log.e("JSON Content", jsonFileContent);
 
                     //check json content
-                    if(jsonFileContent.isEmpty()){
-                        loadingProgressBar.setVisibility(View.GONE);
-                        succeedIcon.setVisibility(View.INVISIBLE);
-                        failedIcon.setVisibility(View.VISIBLE);
-                        Toast.makeText(AwsActivity.this, "Sorry, image cannot be recognized", Toast.LENGTH_SHORT).show();
+                    if(jsonFileContent.equals("{}")){ //json is empty
+
+                        // Open error activity
+                        Intent intent = new Intent(AwsActivity.this, InvitationFailedActivity.class);
+                        startActivity(intent);
+
+                        //Toast.makeText(AwsActivity.this, "Sorry, image cannot be recognized", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        //Transfer jsonFileContent to CALENDAR ACTIVITY
+                        Intent intent = new Intent(AwsActivity.this, CalendarActivity.class);
+                        intent.putExtra("jsonFileContent", jsonFileContent.toString());
+                        finish();
+                        startActivity(intent);
                     }
 
-                    //Transfer jsonFileContent to CALENDAR ACTIVITY
-                    Intent intent = new Intent(AwsActivity.this, CalendarActivity.class);
-                    intent.putExtra("jsonFileContent", jsonFileContent.toString());
-                    finish();
-                    startActivity(intent);
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -110,28 +115,8 @@ public class AwsActivity extends AppCompatActivity implements Serializable, Comp
         thread.start();
 
 
-
-
-
     }
 
-//    private void isJsonEmpty(String jsonFilePath) {
-//
-//        if(!jsonFilePath.isEmpty())
-//        {
-//            loadingProgressBar.setVisibility(View.GONE);
-//            succeedIcon.setVisibility(View.VISIBLE);
-//            failedIcon.setVisibility(View.INVISIBLE);
-//
-//        }
-//        else{
-//            loadingProgressBar.setVisibility(View.GONE);
-//            succeedIcon.setVisibility(View.INVISIBLE);
-//            failedIcon.setVisibility(View.VISIBLE);
-//            Toast.makeText(AwsActivity.this, "Sorry, image cannot be recognized", Toast.LENGTH_SHORT).show();
-//        }
-//
-//    }
 
 
     private String readFileContent(String filePath) {
