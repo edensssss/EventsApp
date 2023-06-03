@@ -41,6 +41,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -121,7 +123,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void saveImageToGallery(Bitmap image) {
         // Create a new file to save the image to.
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "image.jpg");
+        //create a unique name to not overwrite
+        byte[] array = new byte[4];
+        new Random().nextBytes(array);
+        String generatedString = new String(array, Charset.forName("UTF-8"));
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "image"+generatedString+".jpg");
 
 // Try to save the image to the file.
         try {
